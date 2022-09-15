@@ -1,0 +1,3 @@
+#!/bin/bash
+msc sort.cs
+./sort.exe
