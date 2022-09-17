@@ -1,3 +1,3 @@
 #!/bin/bash
-mcs sort.cs
-./sort.exe
+g++ main.cpp
+./a.out
