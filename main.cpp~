@@ -1,0 +1,114 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+  
+
+void merge(vector<string> A, int low, int high, int mid){
+  int i, j, k;
+  string c[50];
+  i = low;
+  k = low;
+  j = mid + 1;
+  while (i <= mid && j <= high)
+    {
+      if (A[i] < A[j])
+	{
+	  c[k] = A[i];
+	  k++;
+	  i++;
+	}
+      else
+	{
+	  c[k] = A[j];
+	  k++;
+	  j++;
+	}
+    }
+  while (i <= mid)
+    {
+      c[k] = A[i];
+      k++;
+      i++;
+    }
+  while (j <= high)
+    {
+      c[k] = A[j];
+      k++;
+      j++;
+    }
+  for (i = low; i < k; i++)
+    {
+      A[i] = c[i];
+      }
+}
+
+void mergeSort(vector<string> A, int low, int high){
+  if (low < high){
+    int mid;
+
+    mid = (low + high)/2;
+
+    mergeSort(A, low, mid);
+    mergeSort(A, mid+1, high);
+
+    merge(A, low, high, mid);
+  }
+
+  return;
+}
+
+int main(){
+
+  vector<string> words = {"zbea's", "ccc'c", "CCc", "ccc", "dw", "a"};
+  
+  int arr[] = {1, 5, 3, 2, 4, 6, 0};
+
+  /*  std::string line;
+      while (std::getline(std::cin, line)) {
+      words.push_back(line);
+      }*/
+
+  mergeSort(words, 0, 5);
+  for (int i = 0; i < 6; i++){
+    cout << words[i] << endl;
+  }
+}
+
+/*
+// Function to compare 2 words
+bool isAlphabeticallySmaller(string str1, string str2)
+{
+  transform(str1.begin(), str1.end(), str1.begin(), ::toupper);
+  transform(str2.begin(), str2.end(), str2.begin(), ::toupper);
+
+  if (str1 < str2) {
+    return true;
+  }
+  return false;
+}
+
+void selectionSort(vector<string>& arr)
+{
+  int n = arr.size();
+
+  // One by one move boundary of
+  // unsorted subarray
+  for (int i = 0; i < n - 1; i++) {
+
+    // Find the minimum element
+    // in unsorted array
+    int min_idx = i;
+    for (int j = i + 1; j < n; j++)
+      if (isAlphabeticallySmaller(arr[j], arr[min_idx]))
+	min_idx = j;
+
+    // Swap the found minimum
+    // element with the first element
+    string temp = arr[min_idx];
+    arr[min_idx] = arr[i];
+    arr[i] = temp;
+  }
+  }*/
+
+  //  std::cout << words << std::endl;
+
