@@ -10,7 +10,6 @@ namespace sort {
 		      //This will contain all the words in one string
 		      
 		      string str = "";
-		      string word = "";
 		      string input = Console.ReadLine();
 		      while ((input = Console.ReadLine()) != null && input != "") {
 		            str += (input + " ");
@@ -23,7 +22,7 @@ namespace sort {
 
 				//Actually sorting through the words and checking the order
 				if (string.Compare (arr[i], arr[i+1]) < 0){
-					word = arr[i];
+					string word = arr[i];
 					arr[i] = arr[i + 1];
 					arr[i + 1] = word;
 				}
